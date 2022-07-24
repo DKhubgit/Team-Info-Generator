@@ -17,7 +17,13 @@ function writeHtml(managerStr, engineerStr, internStr) {
         }
     })
 }
-
+var confirmInput = (input) => {
+    if (input) {
+        return true;
+    } else {
+        return "Please provide an input!"
+    }
+}
 async function init() { //initializes the application with prompts
     console.log("Team Info Generator!");
     managerStr = managerStr + await managerInfo();
@@ -57,22 +63,26 @@ function managerInfo() {
         {
             type: 'input',
             message: "Please enter Manager's Name: ",
-            name: 'Name'
+            name: 'Name',
+            validate: confirmInput
         },
         {
             type: 'input',
             message: "Enter Employee ID: ",
-            name: 'Id'
+            name: 'Id',
+            validate: confirmInput
         },
         {
             type: 'input',
             message: "Enter Email address: ",
-            name: 'Email'
+            name: 'Email',
+            validate: confirmInput
         },
         {
             type: 'input',
             message: "Enter Office Number: ",
-            name: 'Office'
+            name: 'Office',
+            validate: confirmInput
         }
     ])
     .then(res => {
@@ -88,22 +98,26 @@ function engineerInfo() {
         {
             type: 'input',
             message: "Enter Engineer's name: ",
-            name: 'Name'
+            name: 'Name',
+            validate: confirmInput
         },
         {
             type: 'input',
             message: "Enter Employee ID: ",
-            name: 'Id'
+            name: 'Id',
+            validate: confirmInput
         },
         {
             type: 'input',
             message: "Enter email: ",
-            name: 'Email'
+            name: 'Email',
+            validate: confirmInput
         },
         {
             type: 'input',
             message: "Enter Github username: ",
-            name: 'Username'
+            name: 'Username',
+            validate: confirmInput
         }
     ])
     .then(res => {
@@ -117,22 +131,26 @@ function internInfo() {
         {
             type: 'input',
             message: "Enter Intern's name: ",
-            name: 'Name'
+            name: 'Name',
+            validate: confirmInput
         },
         {
             type: 'input',
             message: "Enter Employee ID: ",
-            name: 'Id'
+            name: 'Id',
+            validate: confirmInput
         },
         {
             type: 'input',
             message: "Enter email: ",
-            name: 'Email'
+            name: 'Email',
+            validate: confirmInput
         },
         {
             type: 'input',
             message: "Enter School: ",
-            name: 'School'
+            name: 'School',
+            validate: confirmInput
         }
     ])
     .then(res => {
