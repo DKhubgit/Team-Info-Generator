@@ -5,8 +5,12 @@ const Manager = require('./lib/manager');
 const Engineer = require('./lib/engineer');
 const Intern = require('./lib/intern');
 
-function writeHtml() {
-    const data = helper.generateHtml();
+var managerStr = '';
+var engineerStr = '';
+var internStr = '';
+
+function writeHtml(managerStr, engineerStr, internStr) {
+    const data = helper.generateHtml(managerStr, engineerStr, internStr);
     fs.writeFile('./dist/index.html', data, err => {
         if (err) {
             console.log(err);
@@ -14,40 +18,42 @@ function writeHtml() {
     })
 }
 
-//team manager’s name, employee ID, email address, and office number
-function init() { //initializes the application with prompts about the manager to start
+async function init() { //initializes the application with prompts
     console.log("Team Info Generator!");
-    writeHtml();
-    managerInfo();
+    managerStr = managerStr + await managerInfo();
+    console.log("Successfully added Manager!");
+    let add = true;
+    let string = [];
+    while (add) {
+        string = await inquirer.prompt([
+            {
+                type: 'list',
+                message: 'Please choose an Employee to add to your Team: ',
+                name: 'userChoice',
+                choices: ['Engineer', 'Intern', 'Finish!'],
+            }
+        ])
+        .then(res => {
+            return res.userChoice;
+        })
+        .catch(err => console.log(err))
+        
+       if(string === "Engineer") {
+        engineerStr = engineerStr + await engineerInfo();
+        console.log("Successfully added Engineer!")
+       } else if (string === "Intern") {
+        internStr = internStr + await internInfo();
+        console.log("Successfully added Intern!");
+       } else if (string === 'Finish!') {
+        add = false;
+       }
+    }
+    writeHtml(managerStr, engineerStr, internStr);
     return;
 }
 
-function addEmployees() { // this loops until user selects finish
-    inquirer.prompt([
-        {
-            type: 'list',
-            message: 'Please choose an Employee to add to your Team: ',
-            name: 'userChoice',
-            choices: ['Engineer', 'Intern', 'Finish'],
-        }
-    ])
-    .then(res => {
-        if (res.userChoice === "Engineer") {
-            const data = engineerInfo();
-            return data;
-        } else if (res.userChoice === 'Intern') {
-            const data = internInfo();
-            return data;
-        } else if (res.userChoice === 'Finish') {
-            console.log('All done! Please see newly created HTML file!')
-            return res.userChoice;
-        }
-    })
-    .catch(err => console.log(err))
-}
-
 function managerInfo() {
-    inquirer.prompt([
+    return inquirer.prompt([
         {
             type: 'input',
             message: "Please enter Manager's Name: ",
@@ -71,16 +77,14 @@ function managerInfo() {
     ])
     .then(res => {
         const data = new Manager(res.Name, res.Id, res.Email, res.Office); 
-        //append data to html
-        console.log("added Manager!")
-        addEmployees(); // presents the option to add employees
+        return helper.managerCard(data);
     })
     .catch(err => console.log("managerInfo error", err));
 }
 
 // engineer’s name, ID, email, and GitHub username
 function engineerInfo() {
-   inquirer.prompt([
+   return inquirer.prompt([
         {
             type: 'input',
             message: "Enter Engineer's name: ",
@@ -88,7 +92,7 @@ function engineerInfo() {
         },
         {
             type: 'input',
-            message: "Enter ID: ",
+            message: "Enter Employee ID: ",
             name: 'Id'
         },
         {
@@ -104,14 +108,12 @@ function engineerInfo() {
     ])
     .then(res => {
         const data = new Engineer(res.Name, res.Id, res.Email, res.Username);
-        //append data to html file
-        console.log("added Engineer!")
-        addEmployees();
+        return helper.engineerCard(data);
     })
     .catch(err => console.log("Error in engineerInfo", err))
 }
 function internInfo() {
-   inquirer.prompt([
+   return inquirer.prompt([
         {
             type: 'input',
             message: "Enter Intern's name: ",
@@ -119,7 +121,7 @@ function internInfo() {
         },
         {
             type: 'input',
-            message: "Enter ID: ",
+            message: "Enter Employee ID: ",
             name: 'Id'
         },
         {
@@ -135,9 +137,7 @@ function internInfo() {
     ])
     .then(res => {
         const data = new Intern(res.Name, res.Id, res.Email, res.School);
-        //append data to html file
-        console.log("Added Intern");
-        addEmployees();
+        return helper.internCard(data);
     })
     .catch(err => console.log("Error in internInfo", err))
 }
