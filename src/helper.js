@@ -1,7 +1,5 @@
-// create functions that are going to be used multiple times
-// place functions here to remove cluster from other js files?
 
-function generateHtml(managerStr, engineerStr, internStr) { // returns a basic layout of the webpage, we can then append new 'cards' dynamically
+function generateHtml(managerStr, engineerStr, internStr) {
     return `
     <html lang="en">
         <head>
@@ -49,7 +47,7 @@ function generateHtml(managerStr, engineerStr, internStr) { // returns a basic l
     </html>
     `;
 };
-
+// These functions return a string that has the HTML elements and the employee's info
 function managerCard(data) {
     return `
                 <div class="card ms-2" style="width: 18rem;">

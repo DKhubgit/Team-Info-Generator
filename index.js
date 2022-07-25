@@ -17,6 +17,7 @@ function writeHtml(managerStr, engineerStr, internStr) {
         }
     })
 }
+//function for the validation in the prompt
 var confirmInput = (input) => {
     if (input) {
         return true;
@@ -92,7 +93,6 @@ function managerInfo() {
     .catch(err => console.log("managerInfo error", err));
 }
 
-// engineer’s name, ID, email, and GitHub username
 function engineerInfo() {
    return inquirer.prompt([
         {
