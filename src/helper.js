@@ -56,7 +56,7 @@ function managerCard(data) {
                     <div class="card-body">
                         <h5 class="card-title">${data.getName() + " (ID: " + data.getId() + ")"}</h5>
                         <h6 class="card-subtitle mb-2 text-muted">${data.getRole() + " (Office: " + data.officeNumber + ")"}</h6>
-                        <a href="mailto: ${data.getEmail()}" class="card-link">Email</a>
+                        <a href="mailto: ${data.getEmail()}" class="card-link" target="_blank">Email</a>
                     </div>
                 </div>
     `;
@@ -68,8 +68,8 @@ function engineerCard(data) {
                     <div class="card-body">
                         <h5 class="card-title">${data.getName() + " (ID: " + data.getId() + ")"}</h5>
                         <h6 class="card-subtitle mb-2 text-muted">${data.getRole()}</h6>
-                        <a href="mailto: ${data.getEmail()}" class="card-link">Email</a>
-                        <a href="${data.getGithub()}" class="card-link">GitHub</a>
+                        <a href="mailto: ${data.getEmail()}" class="card-link" target="_blank">Email</a>
+                        <a href="${data.getGithub()}" class="card-link" target="_blank">GitHub</a>
                     </div>
                 </div>
     `;
@@ -81,7 +81,7 @@ function internCard(data) {
                     <div class="card-body">
                         <h5 class="card-title">${data.getName() + " (ID: " + data.getId() + ")"}</h5>
                         <h6 class="card-subtitle mb-2 text-muted">${data.getRole() + " (" + data.getSchool() + ")"}</h6>
-                        <a href="mailto: ${data.getEmail()}" class="card-link">Email</a>
+                        <a href="mailto: ${data.getEmail()}" class="card-link" target="_blank">Email</a>
                     </div>
                 </div>
     `;
