@@ -1,0 +1,53 @@
+"Manager"
+
+Please enter Manager's Name:  Daniel
+
+Enter Employee ID: 10001
+
+Enter Email Address: Email1@website.com
+
+Enter Office Number: 72722
+
+-------------------------------
+"Engineer"
+
+Enter Engineer's Name: Mike
+
+Enter Employee ID: 10002
+
+Enter Email: Email2@website.com
+
+Enter Github username: MikeErm
+
+-------------------------------
+"Engineer"
+
+Enter Engineer's Name: Francesca
+
+Enter Employee ID: 10003
+
+Enter Email: Email3@website.com
+
+Enter Github username: FranFran
+
+-------------------------------
+"Intern"
+
+Enter Intern's Name: Kim
+
+Enter Employee ID: 10004
+
+Enter Email: Email4@website.com
+
+Enter School: CRIMINAL LAW SCHOOL
+
+-------------------------------
+"Intern"
+
+Enter Intern's Name: Jimmy
+
+Enter Employee ID: 10005
+
+Enter Email: Email5@website.com
+
+Enter School: ELDER LAW SCHOOL
