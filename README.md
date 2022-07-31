@@ -43,6 +43,11 @@
 
   A `sample.txt` is in the root directory folder for testing. Here is a walkthrough of the application. 
 
+
+  https://user-images.githubusercontent.com/103972201/181407131-26156d5f-4401-495f-89ec-f740d90f3604.mp4
+  
+  CREDITS to Clideo.com for help reducing video file size.
+
   ## Questions
 
   GitHub profile: [https://github.com/DKhubgit](https://github.com/DKhubgit)
